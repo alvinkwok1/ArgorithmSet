@@ -8,8 +8,8 @@ public class GATest {
   @Test
   public void solve() {
     GaContext gaContext =
-      new GaContext().setPopulationSize(6)
-        .setElitistSelectNum(2)
+      new GaContext().setPopulationSize(60)
+        .setElitistSelectNum(20)
       .setEncoder(new ChromosomeEncoder())
       .setDecoder(new ChromosomeDecoder())
       .setStopFunction(new StopFunction())
