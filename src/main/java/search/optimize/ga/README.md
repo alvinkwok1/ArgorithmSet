@@ -1,6 +1,6 @@
 遗传算法实现  
 1、定义了遗传算法的主要处理流程  
-2、使用时需要自己定义选择算子、交叉算子、变异算子，适应度函数、中止函数，具体的使用请查看测试代码样例  https://github.com/fruitdish/ArgorithmSet/tree/master/src/test/java/search/optimize/ga
+2、使用时需要自己定义选择算子、交叉算子、变异算子，适应度函数、中止函数，具体的使用请查看测试代码样例  https://github.com/fruitdish/ArgorithmSet/tree/master/src/test/java/search/optimize/ga  
 3、精英策略采用了外部空间保留精英策略，并实现了不同的两种策略  
 策略1： 将第t代种群与外部精英空间合并形成中间代Pt`，然后从Pt`中选择Npop个直接进入第t+1代，后续继续应用交叉、变异算子。  
 策略2：在t+1代中保留N个精英的位置，从t代形成交配池，选择Npop-N个进入t+1代，从外部精英空间选择N个直接进入t+1代。
