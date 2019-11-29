@@ -8,12 +8,12 @@ import java.util.List;
  *
  */
 public interface ISort<T> {
+
   /**
-   * 排序接口
+   * 使用外部比较器进行排序
    * @param data
+   * @param comparator
    * @return
    */
-  List<? extends Comparable> sort(List<? extends Comparable> data);
-
-  List<T> sort(List<T> data, Comparator<T> comparator);
+  T[] sort(T[] data, Comparator<T> comparator);
 }

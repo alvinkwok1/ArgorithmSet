@@ -1,9 +1,9 @@
-package sort.bubble;
-
+package sort.insertion;
 
 import org.junit.Assert;
 import org.junit.Test;
 import sort.ISort;
+import sort.bubble.BubbleSort;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class BubbleSortTest {
+public class InsertionSortTest {
 
   private int[] tagetList={-1,1,2,6};
 
@@ -21,7 +21,7 @@ public class BubbleSortTest {
 
   @Test
   public void testSort() {
-    ISort<Integer> sortor = new BubbleSort<>();
+    ISort<Integer> sortor = new InsertionSort<>();
     Integer[] result =  sortor.sort(prepare(), new Comparator<Integer>() {
       @Override
       public int compare(Integer o1, Integer o2) {
