@@ -15,17 +15,17 @@ public class SelectionSort<T> implements ISort<T> {
     }
 
    for (int i=0;i<arrLen;i++) {
-     // 选最小的
-     int minIndex = 0;
-     T min = data[i];
+     // 根据比较获取目标索引
+     int targetIndex = i;
+     T target = data[i];
      for (int j=i;j<arrLen;j++) {
-       if (comparator.compare(min,data[j])>0) {
-         min=data[j];
-         minIndex = j;
+       if (comparator.compare(target,data[j])>0) {
+         target=data[j];
+         targetIndex = j;
        }
      }
      // 放置到已排序的末尾
-     ArrayUtils.swap(data,i,minIndex);
+     ArrayUtils.swap(data,i,targetIndex);
    }
     return data;
   }
