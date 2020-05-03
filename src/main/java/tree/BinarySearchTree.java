@@ -5,9 +5,20 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
+/**
+ * 普通二叉搜索树
+ * 查询性能： O（h）,h为树的高度，最坏情况h = n,n为树中节点个数
+ * 也就是二叉搜索树没有做平衡形成了一条链
+ * 添加性能： O（h），最坏情况 h = n
+ * 删除指定性能: O(1)
+ * 根据key删除性能： O（h）,因为要搜索key对应的节点
+ * @param <V>
+ */
 public class BinarySearchTree<V> implements Iterable {
-
-
+  /**
+   * 二叉搜索树的数据存储结构
+   * @param <V>
+   */
   class Node<V> {
     // k是关键词
     int key;
