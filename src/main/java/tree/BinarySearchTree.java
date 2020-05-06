@@ -51,7 +51,7 @@ public class BinarySearchTree<V> implements Iterable {
    */
   public void add(int key, V value) {
     Node<V> y = null, x;
-    Node<V> n = new Node<>(key, value);
+    Node<V> n = new Node(key, value);
     x = this.root;
     // 寻找可插入的双亲节点
     while (x != null) {
