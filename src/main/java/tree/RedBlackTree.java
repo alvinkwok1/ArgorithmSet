@@ -86,9 +86,11 @@ public class RedBlackTree<V> {
   }
 
   // 哨兵节点，降低操作复杂度，并进行辅助判断，属于外部节点，颜色是黑色
-  final Node<V> NIL = new Node(BLACK);
+  private final Node<V> NIL = new Node(BLACK);
   // 根节点
   private Node<V> root = NIL;
+  // 树中节点数目
+  private int size = 0;
 
   /**
    * 先使用TREE-INSERT(T,x) 也就是BST的一般操作方式将节点插入到指定位置
@@ -123,6 +125,7 @@ public class RedBlackTree<V> {
     // 上面操作都是正常的TREE-INSERT(x)过程，但是插入以后可能会导致树的红黑性质
     // 出现违背，因此需要进行调整
     insertFixUp(z);
+    size++;
   }
 
   /**
@@ -180,6 +183,7 @@ public class RedBlackTree<V> {
 
   /**
    * 根据key值查找到对应的节点
+   *
    * @param k
    * @return
    */
@@ -212,6 +216,7 @@ public class RedBlackTree<V> {
 
   /**
    * 对外暴露的方法
+   *
    * @param k
    * @return
    */
@@ -226,6 +231,7 @@ public class RedBlackTree<V> {
 
   /**
    * 通过key值移除一个节点
+   *
    * @param k
    */
   public void remove(int k) {
@@ -238,6 +244,7 @@ public class RedBlackTree<V> {
 
   /**
    * 从树中移除一个指定节点
+   *
    * @param z
    */
   private void remove(Node<V> z) {
@@ -271,6 +278,7 @@ public class RedBlackTree<V> {
     if (yOriginColor == BLACK) {
       deleteFixUp(x);
     }
+    size--;
   }
 
 
@@ -311,8 +319,7 @@ public class RedBlackTree<V> {
         if (w.left.color == BLACK && w.right.color == BLACK) {
           x = x.p;
           w.color = RED;
-        }
-        else if (w.right.color == RED) {
+        } else if (w.right.color == RED) {
           w.color = RED;
           w.right.color = BLACK;
           leftRotate(w);
@@ -329,8 +336,19 @@ public class RedBlackTree<V> {
     x.color = BLACK;
   }
 
+  /**
+   * 将节点u使用节点v进行替代
+   *
+   * @param u
+   * @param v
+   */
   private void treeTransplant(Node<V> u, Node<V> v) {
-    Node<V> y = u.right;
+    if (u.p == NIL)
+      root = v;
+    else if (u == u.p.left)
+      u.p.left = v;
+    else u.p.right = v;
+    v.p = u.p;
   }
 
   /**
@@ -384,10 +402,11 @@ public class RedBlackTree<V> {
 
   public static void main(String[] args) {
     RedBlackTree rbt = new RedBlackTree();
-    rbt.add(6, 6);
-    rbt.add(8, 8);
-    rbt.add(10, 10);
-    rbt.add(12, 12);
-    rbt.add(11, 11);
+    for (int i = 0; i < 500; i++) {
+      rbt.add(i, i);
+    }
+    for (int i = 0; i < 500; i++) {
+      rbt.remove(i);
+    }
   }
 }
