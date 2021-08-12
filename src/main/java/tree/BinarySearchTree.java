@@ -14,7 +14,7 @@ import java.util.Stack;
  * 根据key删除性能： O（h）,因为要搜索key对应的节点
  * @param <V>
  */
-public class BinarySearchTree<V> implements Iterable {
+public class BinarySearchTree<V> {
   /**
    * 二叉搜索树的数据存储结构
    * @param <V>
@@ -222,7 +222,6 @@ public class BinarySearchTree<V> implements Iterable {
    *
    * @return an Iterator.
    */
-  @Override
   public Iterator iterator() {
     return new Itr();
   }
