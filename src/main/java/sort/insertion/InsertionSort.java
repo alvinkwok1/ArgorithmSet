@@ -6,9 +6,9 @@ import sort.ISort;
 import java.util.Comparator;
 import java.util.List;
 
-public class InsertionSort<T> implements ISort<T> {
+public class InsertionSort<T extends Comparable<T>> implements ISort<T> {
   @Override
-  public T[] sort(T[] data, Comparator<T> comparator) {
+  public T[] sort(T[] data) {
     int arrLen = data.length;
     if (arrLen ==0) {
       return data;
@@ -19,7 +19,7 @@ public class InsertionSort<T> implements ISort<T> {
       // 用临时变量存储，后续移动数据时原位置会被覆盖占用
       T temp = data[i];
       // 寻找可插入位置
-      while (j<i && comparator.compare(temp,data[j])>0) {
+      while (j<i && temp.compareTo(data[j])>0) {
         j++;
       }
       // 将比temp大的数值都往后移动

@@ -13,7 +13,7 @@ public class ShellSortTest {
   @Test
   public void testShellSort() {
     ISort<Integer> sortor = new ShellSort<>();
-    Integer[] result = sortor.sort(InitData.getTestData(), new DefaultComparator());
+    Integer[] result = sortor.sort(InitData.getTestData());
     System.out.println("使用希尔增量");
     assertResult(result);
   }
@@ -22,7 +22,7 @@ public class ShellSortTest {
   public void testHibbortIncrementShellSort() {
     ShellSort<Integer> sortor = new ShellSort<>();
     Integer[] testData = InitData.getTestData();
-    Integer[] result = sortor.sort(testData, new DefaultComparator(), new ShellSort.HibbardIncrement(testData.length));
+    Integer[] result = sortor.sort(testData,new ShellSort.HibbardIncrement(testData.length));
     System.out.println("使用hibbort增量");
     assertResult(result);
   }
@@ -31,7 +31,7 @@ public class ShellSortTest {
   public void testKnuthIncrementShellSort() {
     ShellSort<Integer> sortor = new ShellSort<>();
     Integer[] testData = InitData.getTestData();
-    Integer[] result = sortor.sort(testData, new DefaultComparator(), new ShellSort.KnuthIncrement(testData.length));
+    Integer[] result = sortor.sort(testData,  new ShellSort.KnuthIncrement(testData.length));
     System.out.println("使用knuth增量");
     assertResult(result);
   }
